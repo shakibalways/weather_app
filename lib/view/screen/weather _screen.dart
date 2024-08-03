@@ -1,8 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_app/controller/api/weather_service.dart';
 import 'package:weather_app/model/weather_data_model.dart';
-import 'package:weather_app/view/screen/weather_info/weather_details.dart';
+import 'package:weather_app/view/screen/weather_info/weather_info.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
@@ -12,7 +13,7 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  WeatherDataModel? weatherInfo;
+   WeatherDataModel? weatherInfo;
   bool isLoading = false;
   myWeather() {
     isLoading = false;
@@ -48,7 +49,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
   @override
   Widget build(BuildContext context) {
     String formattedDate =
-        DateFormat('EEEE D , MMMM yyyy').format(DateTime.now());
+    DateFormat('EEEE D , MMMM yyyy').format(DateTime.now());
     String formattedTime = DateFormat('hh:mm a').format(DateTime.now());
     return Scaffold(
       backgroundColor: const Color(0xff676BD0),
@@ -58,19 +59,17 @@ class _WeatherScreenState extends State<WeatherScreen> {
           children: [
             isLoading
                 ? WeatherDetail(
-                    weather: weatherInfo!,
-                    formattedTime: formattedTime,
-                    formattedDate: formattedDate,
-                  )
+              weather: weatherInfo!,
+              formattedTime: formattedTime,
+              formattedDate: formattedDate,
+            )
                 : const Center(
-                    child: CircularProgressIndicator(
-                    color: Colors.white,
-                  ))
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ))
           ],
         ),
       ),
     );
   }
 }
-
-
